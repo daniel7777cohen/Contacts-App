@@ -55,7 +55,14 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
 `;
-const ContactEditor = ({ setIsEdit, handleEdit, contact, src, handleAdd ,setIsCreate}) => {
+const ContactEditor = ({
+  setIsEdit,
+  handleEdit,
+  contact,
+  src,
+  handleAdd,
+  setIsCreate,
+}) => {
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     formData: {
@@ -106,7 +113,9 @@ const ContactEditor = ({ setIsEdit, handleEdit, contact, src, handleAdd ,setIsCr
         <>
           {message}
           <button
-            onClick={() => (src === 'edit' ? setIsEdit(false) : setIsCreate(false))}
+            onClick={() =>
+              src === 'edit' ? setIsEdit(false) : setIsCreate(false)
+            }
             style={{ width: '60px' }}
             disabled={isLoading}
           >
@@ -121,10 +130,11 @@ const ContactEditor = ({ setIsEdit, handleEdit, contact, src, handleAdd ,setIsCr
               <Fragment key={index}>
                 <h5>{label}</h5>
                 <input
+                  required
                   type={type}
                   name={name}
                   onChange={(e) => handleChange(e)}
-                  value={formData[name]}
+                  value={formData[name] || ''}
                   style={{ marginBottom: '2px' }}
                 />
               </Fragment>
@@ -134,7 +144,9 @@ const ContactEditor = ({ setIsEdit, handleEdit, contact, src, handleAdd ,setIsCr
             Submit
           </button>
           <button
-            onClick={() => (src === 'edit' ? setIsEdit(false) : setIsCreate(false))}
+            onClick={() =>
+              src === 'edit' ? setIsEdit(false) : setIsCreate(false)
+            }
             style={{ width: '60px' }}
             disabled={isLoading}
           >
